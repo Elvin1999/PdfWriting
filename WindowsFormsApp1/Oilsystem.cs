@@ -20,15 +20,17 @@ namespace WindowsFormsApp1
     {
         public string GetInfo()
         {
-           
-            string result = $@"//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-             Time                      {DateTime.Now.ToShortDateString()} {DateTime.Now.ToShortTimeString()}
-                                   
+
+            string result = $@"================================
+
+Time                      {DateTime.Now.ToShortDateString()} {DateTime.Now.ToShortTimeString()}
+                               ================================            
                                                                  ";
             result += _Cafe.GetInfo();
             result += _PetrolStation.GetInfo();
-            result += $@"
-               All  PAYMENT   {GetAllPrice()} Azn";
+            result += $@"      ================================
+
+All  PAYMENT   {GetAllPrice()} Azn";
             return result;
         }
         public string Check { get; set; }
@@ -51,12 +53,14 @@ namespace WindowsFormsApp1
             {
                 if (item.Count != 0)
                 {
-                    info += $@"
-                               Name {item.Name}       {item.Count} X {item.Price}";                                               
+                    info += $@"================================
+
+              Name {item.Name}       {item.Count} X {item.Price}";
                 }
             }
-            info += $@"
-                               All Price Cafe - >{GetPrice().ToString()} Azn";            
+            info += $@"        ================================
+
+             All Price Cafe - >{GetPrice().ToString()} Azn";
             return info;
         }
         public double Price { get; set; }
@@ -108,20 +112,21 @@ namespace WindowsFormsApp1
         {
             string info = string.Empty;
             string type = string.Empty;
-            if (Liter == 0.95)
+            if (Price == 0.95)
             {
                 type = "AI92";
             }
-            else if (Liter == 1.15)
+            else if (Price == 1.15)
             {
                 type = "AI95";
             }
-            else
+            else if (Price == 0.6)
             {
                 type = "DIZEL";
             }
+
             info += $@"
-                               Name - >{type}   {Liter} X {Price}";
+             Name - >{type}   {Liter} X {Price}";
             return info;
         }
 

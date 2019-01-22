@@ -52,8 +52,10 @@ namespace WindowsFormsApp1
                 var read = File.ReadAllText(filetext);
                 OilSystem system1 = JsonConvert.DeserializeObject<OilSystem>(read);
                 var pdffile = filetext.Remove(filetext.Length - 5, 5) + ".pdf";
-                MessageBox.Show(pdffile);
+                
                 Document document = new Document();
+                iTextSharp.text.Rectangle rectangle = new iTextSharp.text.Rectangle(300, 450);
+                document.SetPageSize(rectangle);
                 PdfWriter.GetInstance(document, new FileStream(pdffile, FileMode.Create));
                 document.Open();
                 Paragraph elements = new Paragraph(system1.GetInfo());
