@@ -49,10 +49,10 @@ namespace WindowsFormsApp1
             foreach (var myitem in listBox1.Items)
             {
                 var filetext = myitem.ToString();
-                //MessageBox.Show(filetext);
-                OilSystem system1 = JsonConvert.DeserializeObject<OilSystem>(@"C:\Users\Jama_yw17\source\repos\Oil-system-Winform\Oil system1\bin\Debug\1.json");
-
+                //var read = File.ReadAllText(filetext);
+               // OilSystem system1 = JsonConvert.DeserializeObject<OilSystem>(read);
                 var pdffile = filetext.Remove(filetext.Length - 5, 5) + ".pdf";
+                MessageBox.Show(pdffile);
                 Document document = new Document();
                 PdfWriter.GetInstance(document, new FileStream(pdffile, FileMode.Create));
                 document.Open();
@@ -60,6 +60,7 @@ namespace WindowsFormsApp1
                 document.Add(elements);
                 document.Close();
             }
+
 
 
         }
