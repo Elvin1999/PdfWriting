@@ -20,17 +20,18 @@ namespace WindowsFormsApp1
     {
         public string GetInfo()
         {
-
+                               
             string result = $@"================================
-
-Time                      {DateTime.Now.ToShortDateString()} {DateTime.Now.ToShortTimeString()}
+                         BEST OIL
+                               ================================
+<Time>                     {DateTime.Now.ToShortDateString()} {DateTime.Now.ToShortTimeString()}
                                ================================            
                                                                  ";
             result += _Cafe.GetInfo();
             result += _PetrolStation.GetInfo();
             result += $@"      ================================
 
-All  PAYMENT   {GetAllPrice()} Azn";
+All  PAYMENT                              {GetAllPrice()} Azn";
             return result;
         }
         public string Check { get; set; }
@@ -48,19 +49,21 @@ All  PAYMENT   {GetAllPrice()} Azn";
         public string GetInfo()
         {
             String info = String.Empty;
+            info += $@"================================
+                            CAFE
+================================
+   Name               Count              Price
+";
 
             foreach (var item in foods)
             {
                 if (item.Count != 0)
                 {
                     info += $@"================================
-
-              Name {item.Name}       {item.Count} X {item.Price}";
+     {item.Name}                {item.Count}         X           {item.Price}";
                 }
             }
-            info += $@"        ================================
-
-             All Price Cafe - >{GetPrice().ToString()} Azn";
+            info += $@"        ================================";
             return info;
         }
         public double Price { get; set; }
@@ -126,7 +129,8 @@ All  PAYMENT   {GetAllPrice()} Azn";
             }
 
             info += $@"
-             Name - >{type}   {Liter} X {Price}";
+                   ================================
+       {type}                   {Liter}        X         {Price}";
             return info;
         }
 
