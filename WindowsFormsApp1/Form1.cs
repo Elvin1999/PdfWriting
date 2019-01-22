@@ -49,14 +49,14 @@ namespace WindowsFormsApp1
             foreach (var myitem in listBox1.Items)
             {
                 var filetext = myitem.ToString();
-                //var read = File.ReadAllText(filetext);
-               // OilSystem system1 = JsonConvert.DeserializeObject<OilSystem>(read);
+                var read = File.ReadAllText(filetext);
+                OilSystem system1 = JsonConvert.DeserializeObject<OilSystem>(read);
                 var pdffile = filetext.Remove(filetext.Length - 5, 5) + ".pdf";
                 MessageBox.Show(pdffile);
                 Document document = new Document();
                 PdfWriter.GetInstance(document, new FileStream(pdffile, FileMode.Create));
                 document.Open();
-                Paragraph elements = new Paragraph($@"{filetext}");
+                Paragraph elements = new Paragraph(system1.GetInfo());
                 document.Add(elements);
                 document.Close();
             }

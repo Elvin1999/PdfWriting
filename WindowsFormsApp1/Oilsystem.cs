@@ -18,6 +18,20 @@ namespace WindowsFormsApp1
     }
     class OilSystem
     {
+        public string GetInfo()
+        {
+           
+            string result = $@"//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+             Time                      {DateTime.Now.ToShortDateString()} {DateTime.Now.ToShortTimeString()}
+                                   
+                                                                 ";
+            result += _Cafe.GetInfo();
+            result += _PetrolStation.GetInfo();
+            result += $@"
+               All  PAYMENT   {GetAllPrice()} Azn";
+            return result;
+        }
+        public string Check { get; set; }
         public double GetAllPrice()
         {
             double price = _Cafe.GetPrice();
@@ -29,6 +43,22 @@ namespace WindowsFormsApp1
     }
     class MiniCafe
     {
+        public string GetInfo()
+        {
+            String info = String.Empty;
+
+            foreach (var item in foods)
+            {
+                if (item.Count != 0)
+                {
+                    info += $@"
+                               Name {item.Name}       {item.Count} X {item.Price}";                                               
+                }
+            }
+            info += $@"
+                               All Price Cafe - >{GetPrice().ToString()} Azn";            
+            return info;
+        }
         public double Price { get; set; }
         public double GetPrice()
         {
@@ -73,6 +103,28 @@ namespace WindowsFormsApp1
         public double Liter { get; set; }
         public double Price { get; set; }
         public double AllPrice { get; set; }
+
+        public string GetInfo()
+        {
+            string info = string.Empty;
+            string type = string.Empty;
+            if (Liter == 0.95)
+            {
+                type = "AI92";
+            }
+            else if (Liter == 1.15)
+            {
+                type = "AI95";
+            }
+            else
+            {
+                type = "DIZEL";
+            }
+            info += $@"
+                               Name - >{type}   {Liter} X {Price}";
+            return info;
+        }
+
         public double GetAllPrice()
         {
             return Liter * Price;
